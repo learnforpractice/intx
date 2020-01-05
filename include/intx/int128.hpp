@@ -506,8 +506,8 @@ constexpr uint16_t reciprocal_table[] = {REPEAT256()};
 /// Based on Algorithm 2 from "Improved division by invariant integers".
 inline uint64_t reciprocal_2by1(uint64_t d) noexcept
 {
-    auto d9 = uint8_t(d >> 55);
-    auto v0 = uint64_t{internal::reciprocal_table[d9]};
+    auto d9 = d >> 55;
+    auto v0 = uint64_t{internal::reciprocal_table[d9 - 256]};
 
     auto d40 = (d >> 24) + 1;
     auto v1 = (v0 << 11) - (v0 * v0 * d40 >> 40) - 1;
