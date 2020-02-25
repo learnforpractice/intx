@@ -16,9 +16,8 @@
 #include <intrin.h>
 #endif
 
-#include <eosiolib/system.h>
+#include <eosiolib_legacy/eosiolib.h>
 
-#define EOSIO_THROW(msg) eosio_assert(false, msg)
 namespace intx
 {
 template <unsigned N>
@@ -766,6 +765,7 @@ inline int from_dec_digit(char c)
         return c - '0';
     } else {
         EOSIO_THROW("Invalid digit: ");
+        return 0;
     }
 }
 
